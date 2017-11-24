@@ -23,18 +23,22 @@ class Distrito(models.Model):
         return 'Distrito {}'.format(self.nombre)
 
 class Candidato(models.Model):
+    
+    
+    
     """
-    #TODO Completar segun consideraciones del desarrollador
-    En este comentario escribir por que se decide modelar de esta
-    forma la clase
+    se decide utilizar este modelo para la clase Candidato porque es nesecesario el nombre 
     """
-    pass
-
-
+    nombre = models.CharField(max_length=50)
+    
 class Votos(models.Model):
     """
-    #TODO Completar segun consideraciones del desarrollador
-    En este comentario escribir por que se decide modelar de esta
-    forma la clase
+     se decide utilizar este modelo para la clase Votos candidato_votado para mas tarde tener una refenrencia  
+     de cuantos votos son para cada candidato, y disctricto para mas tarde saber cuantos votaron en cada districto 
+    votos null va a reflear la cantidad de votos null 
     """
-    pass
+    candidato = models.ForeignKey('Candidato',on_delete=models.CASCADE,)
+    districto = models.ForeignKey('Distrito',on_delete=models.CASCADE,)
+    votos_null =models.IntegerField('votos null',default=0)
+    cantidad_votos = models.IntegerField('cantidad de votos',default=0)
+    

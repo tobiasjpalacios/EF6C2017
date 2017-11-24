@@ -19,8 +19,18 @@ def resultado_global(request):
     """
     context={}
     context['distritos'] = Distrito.objects.all()
-    #TODO TU CODIGO AQUI
-
+    #TODO TU CODIGO AQUI    
+    candidato = Candidato.objects.all()
+    votosnull= Votos.objects.filter(candidato__isnull=True)
+    context['allvotos'] = Votos.objects.all()
+    context['votosnull'] =Votos.objects.filter(candidato__isnull=True
+    allvotos =  Votos.objects.all()                                )
+    #porcentajevotosnull = int(votosnull)*100)/int(candidatos)
+   
+    contador = {}
+    for voto in allvotos:
+        contador=contador+1  
+    print contador
     return render(request,'global.html',context)
 
 
